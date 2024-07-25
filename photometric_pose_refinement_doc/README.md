@@ -27,12 +27,8 @@ Following are simply experimentations for learning purposes.
 <!-- ![img_detection_tag](both_Blender/img_detection_tag.png) -->
 
 <div align="center">
-  <video src="./both_Blender/I_error.mp4" width="640" height="512" type="video/mp4" controls/>
+  <video src="https://github.com/user-attachments/assets/08221801-5a7d-407c-bf9f-bdd78ab72a81" width="640" height="512" type="video/mp4" controls/>
 </div>
-
-<video width="640" height="512" controls>
-  <source src="./both_Blender/I_error.mp4" type="video/mp4">
-</video>
 
 ### Photometric error between input Blender image and reference AprilTag image
 - Blender is only used to render the camera image (left image with AprilTag pose detection in overlay)
@@ -46,9 +42,5 @@ Following are simply experimentations for learning purposes.
 <!-- ![img_detection_tag](Blender_marker_code/img_detection_tag.png) -->
 
 <div align="center">
-  <video src="./Blender_marker_code/I_error.mp4" width="640" height="512" type="video/mp4" controls/>
+  <video src="https://github.com/user-attachments/assets/7d449b7d-d845-4840-b3f2-0cf94472d04f" width="640" height="512" type="video/mp4" controls/>
 </div>
-
-<video width="640" height="512" controls>
-  <source src="./Blender_marker_code/I_error.mp4" type="video/mp4">
-</video>
