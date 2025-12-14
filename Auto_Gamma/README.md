@@ -16,95 +16,21 @@
 - [AndyHuang1995/Image-Contrast-Enhancement (Python)](https://github.com/AndyHuang1995/Image-Contrast-Enhancement) (Python implementation of [Zhenqiang Ying, Ge Li, Yurui Ren, Ronggang Wang, & Wenmin Wang (2017). A New Image Contrast Enhancement Algorithm Using Exposure Fusion Framework. In International Conference on Computer Analysis of Images and Patterns.](https://baidut.github.io/OpenCE/caip2017.html))
 - [Gang Cao, Lihui Huang, Huawei Tian, Xianglin Huang, Yongbin Wang, & Ruicong Zhi. (2022). Contrast Enhancement of Brightness-Distorted Images by Improved Adaptive Gamma Correction.](https://arxiv.org/abs/1709.04427) ([leowang7/iagcwd](https://github.com/leowang7/iagcwd))
 
-## The dumb way
+## Some experimentations
 
-### Binary search tree
-- [wiki](https://en.wikipedia.org/wiki/Binary_search_tree)
+### Papers
+- [Inwook Shim, Joon-Young Lee, & In-So Kweon (2014). Auto-adjusting camera exposure for outdoor robotics using gradient information. 2014 IEEE/RSJ International Conference on Intelligent Robots and Systems, 1011-1017.](https://joonyoung-cv.github.io/assets/paper/14_iros_auto_adjusting.pdf)
+- [Inwook Shim, Tae-Hyun Oh, Joon-Young Lee, Jin Wook Choi, Dong-geol Choi, & In So Kweon (2017). Gradient-Based Camera Exposure Control for Outdoor Mobile Platforms. IEEE Transactions on Circuits and Systems for Video Technology, 29, 1569-1583.](https://arxiv.org/abs/1708.07338)
+- [Zichao Zhang, Christian Forster, & Davide Scaramuzza (2017). Active exposure control for robust visual odometry in HDR environments. 2017 IEEE International Conference on Robotics and Automation (ICRA), 3894-3901.](https://www.ifi.uzh.ch/dam/jcr:cc5c71f1-3491-4c7e-9490-bb16278aa75e/ICRA17_Zhang_updated.pdf)
 
-A very rough code should give something like this:
-
-<details>
-<summary>C++</summary>
-
-```c++
-#include <iostream>
-#include <vector>
-
-namespace
-{
-void getBSTvalues(std::vector<double> &gamma_vec, double midpoint, double range, int level, int max_levels)
-{
-  if (level < max_levels) {
-    double gamma_left = midpoint - range/2;
-    getBSTvalues(gamma_vec, gamma_left, range/2, level+1, max_levels);
-
-    gamma_vec.push_back(midpoint);
-
-    double gamma_right = midpoint + range/2;
-    getBSTvalues(gamma_vec, gamma_right, range/2, level+1, max_levels);
-  }
-  else {
-    double gamma_left = midpoint - range/2;
-    gamma_vec.push_back(gamma_left);
-    gamma_vec.push_back(midpoint);
-    double gamma_right = midpoint + range/2;
-    gamma_vec.push_back(gamma_right);
-  }
-}
-} // namespace
-
-int main(int, const char *[])
-{
-  int max_levels = 4;
-  double min_val = 0, max_val = 2;
-  double range = (max_val - min_val) / 2.0;
-  double midpoint = min_val + range;
-
-  for (int level = 0; level < max_levels; level++) {
-    std::cout << "\nLevel: " << level << std::endl;
-    if (level == 0) {
-      std::cout << midpoint;
-    }
-    else {
-      int level_start = 1;
-      std::vector<double> gamma_vec;
-      getBSTvalues(gamma_vec, midpoint, range, level_start, level);
-      for (auto gamma_val : gamma_vec) {
-        std::cout << gamma_val << " ";
-      }
-    }
-    std::cout << std::endl;
-  }
-
-  return EXIT_SUCCESS;
-}
-```
-
-</details>
-
-- Output (range is [0 - 2]):
-
-```bash
-Level: 0
-1
-
-Level: 1
-0.5 1 1.5
-
-Level: 2
-0.25 0.5 0.75 1 1.25 1.5 1.75
-
-Level: 3
-0.125 0.25 0.375 0.5 0.625 0.75 0.875 1 1.125 1.25 1.375 1.5 1.625 1.75 1.875
-```
-
-### Compute the Gamma value to be used
-
-#### Contour information (Canny)
-The first idea was to use the mean Canny information to "guide" the recursive search in order to find a Gamma value that would "maximize" the number of contours in the image.
-
-#### Image entropy
-Image entropy is a whole topic but some available [C++ code](https://github.com/dengyueyun666/Image-Contrast-Enhancement/blob/cd2b1eb5bf6396e2fc3b94cd27f73933d5467147/src/Ying_2017_CAIP.cpp#L186-L207) can be directly used.
+### Metrics
+Some metrics have been displayed:
+- Contour information (mean Canny)
+- Image gradient
+- [Image contrast](https://stackoverflow.com/questions/63437029/implementing-histogram-spread-for-image-contrast-metrics/63441306#63441306)
+- Image entropy
+- Lines detection (OpenCV Line Segment Detector)
+- Zhang metric (Zhang ICRA 2017)
 
 ### Datasets
 - [Exclusively Dark (ExDark) Image Dataset (Official Site)](https://github.com/cs-chan/Exclusively-Dark-Image-Dataset)
@@ -114,18 +40,6 @@ Image entropy is a whole topic but some available [C++ code](https://github.com/
 - [VIP-LowLight Dataset](https://uwaterloo.ca/vision-image-processing-lab/research-demos/vip-lowlight-dataset)
 
 ### Some results
-
-#### ExDark
-
-![Bicycle](ExDark/Bicycle/2015_00001.jpeg)
-
-![Cat](ExDark/Cat/2015_03042.jpeg)
-
-![Chair](ExDark/Chair/2015_03777.jpeg)
-
-![Dog](ExDark/Dog/2015_04944.jpeg)
-
-![People](ExDark/People/2015_06246.jpeg)
 
 #### LoL_Test
 
@@ -148,6 +62,3 @@ Image entropy is a whole topic but some available [C++ code](https://github.com/
 ![Img_002](vip-lowlight/Img_002.jpeg)
 
 ![Img_003](vip-lowlight/Img_003.jpeg)
-
-#### Google Drive
-- [More results](https://drive.google.com/drive/folders/12b9-799OLL3THbwFrCwQpT-KI7uzgmIx?usp=drive_link)
