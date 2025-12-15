@@ -30,7 +30,24 @@ Some metrics have been displayed:
 - [Image contrast](https://stackoverflow.com/questions/63437029/implementing-histogram-spread-for-image-contrast-metrics/63441306#63441306)
 - Image entropy
 - Lines detection (OpenCV Line Segment Detector)
+- Shim metric (Shim IROS 2014)
 - Zhang metric (Zhang ICRA 2017)
+
+#### Examples on MEF dataset
+
+![img_0006](Metrics/MEF/img_0006.jpeg)
+
+![img_0007](Metrics/MEF/img_0007.jpeg)
+
+![img_0008](Metrics/MEF/img_0008.jpeg)
+
+![img_0009](Metrics/MEF/img_0009.jpeg)
+
+![img_0010](Metrics/MEF/img_0010.jpeg)
+
+![img_0011](Metrics/MEF/img_0011.jpeg)
+
+![img_0012](Metrics/MEF/img_0012.jpeg)
 
 ### Datasets
 - [Exclusively Dark (ExDark) Image Dataset (Official Site)](https://github.com/cs-chan/Exclusively-Dark-Image-Dataset)
