@@ -22,6 +22,26 @@
 - [Inwook Shim, Joon-Young Lee, & In-So Kweon (2014). Auto-adjusting camera exposure for outdoor robotics using gradient information. 2014 IEEE/RSJ International Conference on Intelligent Robots and Systems, 1011-1017.](https://joonyoung-cv.github.io/assets/paper/14_iros_auto_adjusting.pdf)
 - [Inwook Shim, Tae-Hyun Oh, Joon-Young Lee, Jin Wook Choi, Dong-geol Choi, & In So Kweon (2017). Gradient-Based Camera Exposure Control for Outdoor Mobile Platforms. IEEE Transactions on Circuits and Systems for Video Technology, 29, 1569-1583.](https://arxiv.org/abs/1708.07338)
 - [Zichao Zhang, Christian Forster, & Davide Scaramuzza (2017). Active exposure control for robust visual odometry in HDR environments. 2017 IEEE International Conference on Robotics and Automation (ICRA), 3894-3901.](https://www.ifi.uzh.ch/dam/jcr:cc5c71f1-3491-4c7e-9490-bb16278aa75e/ICRA17_Zhang_updated.pdf)
+- [Ziang Ren, Samuel E. Lensgraf, & Alberto Quattrini Li (2024). Improving the perception of visual fiducial markers in the field using Adaptive Active Exposure Control. ArXiv, abs/2404.12055.](https://arxiv.org/abs/2404.12055)
+
+### Camera Response Model
+- [Zhenqiang Ying, Ge Li, Yurui Ren, Ronggang Wang, & Wenmin Wang (2017). A New Low-Light Image Enhancement Algorithm Using Camera Response Model. 2017 IEEE International Conference on Computer Vision Workshops (ICCVW), 3015-3022.](https://openaccess.thecvf.com/content_ICCV_2017_workshops/papers/w43/Ying_A_New_Low-Light_ICCV_2017_paper.pdf)
+- [Zhenqiang Ying, Ge Li, Yurui Ren, Ronggang Wang, & Wenmin Wang (2017). A New Image Contrast Enhancement Algorithm Using Exposure Fusion Framework. In International Conference on Computer Analysis of Images and Patterns.](https://www.researchgate.net/profile/Zhenqiang-Ying/publication/318730125_A_New_Image_Contrast_Enhancement_Algorithm_Using_Exposure_Fusion_Framework/links/59acef15458515d09cd8b8d0/A-New-Image-Contrast-Enhancement-Algorithm-Using-Exposure-Fusion-Framework.pdf)
+- Using the entropy measure is stupid here since artificially applying a Gamma correction to an image does not make it more informative:
+
+![img_0006](applyK/MEF/img_0006.jpeg)
+
+![img_0007](applyK/MEF/img_0007.jpeg)
+
+![img_0008](applyK/MEF/img_0008.jpeg)
+
+![img_0009](applyK/MEF/img_0009.jpeg)
+
+![img_0010](applyK/MEF/img_0010.jpeg)
+
+![img_0011](applyK/MEF/img_0011.jpeg)
+
+![img_0012](applyK/MEF/img_0012.jpeg)
 
 ### Metrics
 Some metrics have been displayed:
